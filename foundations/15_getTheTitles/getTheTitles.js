@@ -1,6 +1,11 @@
-const getTheTitles = function() {
 
+
+const getTheTitles = function(arr) {
+
+  const name =arr.map(obj => obj.title);
+
+  return name;
 };
 
-// Do not edit below this line
+// Do not edit below this lin
 module.exports = getTheTitles;

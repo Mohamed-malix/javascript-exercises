@@ -18,7 +18,7 @@ If you have a suggestion to improve an exercise, an idea for a new exercise, or 
 1. Each exercise includes the following:
 
    - A markdown file with a description of the task, an empty (or mostly empty) JavaScript file, and a set of tests.
-   - A `solutions` directory that contains an example solution and the same test file with all of the tests unskipped.
+   - A `solutions` directory that contains an example solution and the same test file with all of the tests unskipped
 
    To complete an exercise, you will need to go to the exercise directory with `cd <path to file>` in the terminal and run `npm test exerciseName.spec.js`. For example, to go to the first Foundations exercise "helloWorld", you need to `cd foundations/01_helloWorld` then run `npm test helloWorld`. This should run the test file and show you the output. When you run a test for the first time, it will fail. This is by design! You must open the exercise file and write the code needed to get the test to pass.
 
