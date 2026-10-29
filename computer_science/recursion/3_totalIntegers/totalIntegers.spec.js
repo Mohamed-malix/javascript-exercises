@@ -1,15 +1,15 @@
-const totalIntegers = require('./totalIntegers');
+const totalIntegers = require('./totalIntegers')
 
 describe('totalIntegers', () => {
   test('Counts all integers in a simple array of only integers', () => {
     expect(totalIntegers([1, 2, 3])).toBe(3);
   });
   
-  test.skip('Ignores non-number values', () => {
+  test('Ignores non-number values', () => {
     expect(totalIntegers([1, 2, '3', 4])).toBe(3);
   });
   
-  test.skip('Counts all integers in a plain object', () => {
+  test('Counts all integers in a plain object', () => {
     expect(totalIntegers({ a: 1, b: '2', c: 3 })).toBe(2);
   });
   
