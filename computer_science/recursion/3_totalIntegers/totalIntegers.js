@@ -6,12 +6,12 @@ const totalIntegers = function (theObject) {
     return undefined;
   }
 
-  if (typeof theObject === "object") {
+  if (typeof theObject === "object" && theObject !==null) {
     keys = Object.values(theObject);
   }
 
   const result= keys.reduce((accum, value) => {
-    return(Number.isInteger(value))? accum+=1: accum+notGood(value);
+    return(Number.isInteger(value))? accum+1: accum+notGood(value);
   }, 0);
 
   return result;
