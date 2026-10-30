@@ -1,75 +1,52 @@
 
-// const totalIntegers = function(theObject) {
-//     let intNumber=0;
-//     if(typeof theObject==="object"){
-//         const values= Object.keys(theObject);
-//         values.forEach((value) => {
-//             if(Number.isInteger(theObject[value])){
-//               return ++intNumber;
-//             }else if(typeof theObject[value]!=="string" && theObject[value]!==null){
-//               return totalIntegers(theObject[value]);
-//             }
-//         })
-//     }
+const totalIntegers = function (theObject) {
+  let keys= theObject;
 
-// if(Array.isArray(theObject)){
-//     theObject.forEach((value) => {
-//         if(Number.isInteger(value)){
-//           return ++intNumber;
-//         }else if(typeof value!=="string" && value!==null) {
-//            return totalIntegers(value);
-//         }
-//     })
-// }
-//     return intNumber;
-// };
-
-
-
-// const totalIntegers = function (theObject) {
-//   let values= theObject;
-//   if (typeof theObject === "object") {
-//     values = Object.keys(theObject);
-//   }
-
-//   const result= values.reduce((accum, value) => {
-//     if (Number.isInteger(value)) {
-//       return ++accum;
-//     } else if (typeof value !== "string" && value != null) {
-//       return totalIntegers(value) + accum;
-//     }
-//   }, 0);
-
-//   return result;
-// };
-
-
-  const totalIntegers = function (theObject) {
-    if(Array.isArray(theObject)) {
-     return theObject.reduce((sum, value) => {
-        return(Number.isInteger(value))?++sum:sum+notGood(value);
-      },0);
-    }else{
-      let sum=0;
-      for(value in theObject){
-        if(Number.isInteger(theObject[value])){
-         return ++sum;
-        }else{
-         return notGood(theObject[value])+sum;
-        }
-      }
-
-      return sum;
-    }
+  if(typeof theObject !== "object" && !Array.isArray(theObject)){
+    return undefined;
   }
 
-  function notGood(value) {
-    if (typeof value !== "string" && value != null) {
+  if (typeof theObject === "object") {
+    keys = Object.values(theObject);
+  }
+
+  const result= keys.reduce((accum, value) => {
+    return(Number.isInteger(value))? accum+=1: accum+notGood(value);
+  }, 0);
+
+  return result;
+};
+
+function notGood(value) {
+    if ((typeof value == "object" || Array.isArray(value)) && value !=null) {
       return totalIntegers(value);
     }else{
       return 0;
     }
-  }
+}
+
+
+
+  //  const totalIntegers =function (theObject) {
+  //   if(Array.isArray(theObject)) {
+  //    return theObject.reduce((sum, value) => {
+  //       return(Number.isInteger(value))?sum+1:sum+notGood(value);
+  //     },0);
+  //   }else if(typeof theObject ==="object"){
+  //     let sum=0;
+  //     for(value in theObject){
+  //       if(Number.isInteger(theObject[value])){
+  //         sum+=1;
+  //       }else{
+  //         sum+=notGood(theObject[value]);
+  //       }
+  //     }
+  //     return sum;
+  //   }else{
+  //     return undefined;
+  //   }
+  // }
+
 
 // Do not edit below this line
 module.exports = totalIntegers;
